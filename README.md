@@ -25,8 +25,6 @@ npm init -y
 npm install
 # Eslint - initialisieren
 npx eslint --init
-# Jiti - initialisieren
-npx jiti --init
 ```
 # Update Dependencies
 ```shell
@@ -43,4 +41,34 @@ npm run typecheck     # TS-Typen
 npm run lint          # ESLint
 npm run build         # tsc-Build
 npm run dev / start   # App starten
+```
+
+
+```shell
+npm install express
+
+npm install --save-dev @types/node
+# typescript installieren
+sudo npm install -g typescript
+# Version prüfen
+tsc ---version
+# TypeScript kompilieren
+tsc 
+# Webserver starten
+node dist/index.js
+```
+
+
+
+# Jiti
+npx jiti ist ein TS/ESM-Interpreter, der TypeScript- und moderne JavaScript-Dateien ohne Kompilieren sofort ausführt.
+
+Sie müssen keinen tsc-Build machen und auch keine .js-Dateien erzeugen.
+
+```shell
+# Jiti - global installieren
+npm install -g jiti
+# Jiti - run
+jiti src/index.ts
+# lokal , nicht global installiert: npx jiti src/index.ts
 ```
