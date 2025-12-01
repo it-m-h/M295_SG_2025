@@ -48,8 +48,10 @@ npm run dev / start   # App starten
 npm install express
 
 npm install --save-dev @types/node
-# typescript installieren
-sudo npm install -g typescript
+# typescript installieren (global oder DEV)
+npm install -g typescript
+npm install --save-dev typescript
+
 # Version prüfen
 tsc ---version
 # TypeScript kompilieren
@@ -72,3 +74,27 @@ npm install -g jiti
 jiti src/index.ts
 # lokal , nicht global installiert: npx jiti src/index.ts
 ```
+
+# Eslint and Prettier
+
+```shell
+npm install --save-dev eslint prettier eslint-config-prettier eslint-plugin-prettier
+npm install --save-dev typescript-eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
+```
+
+Fehler finden und automatisch beheben:
+
+```shell
+npx eslint . --ext .ts --fix
+```
+
+# Fehler beheben
+
+```shell
+npm run check
+
+#tsconfig anpassen (lib)
+npm install -D @types/node
+npm install -D @types/express
+# Typedef von express löschen weil @types/express installiert wurden
+``` 

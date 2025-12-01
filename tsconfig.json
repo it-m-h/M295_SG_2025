@@ -1,18 +1,19 @@
 {
   "compilerOptions": {
-    "target": "ES2022",                 // "target": "ES2023" oder "target": "ESNext", mit commonjs: "target": "es5" 
-    "module": "NodeNext",               // "module": "commonjs"
-    "moduleResolution": "NodeNext",     // mit commonjs: "moduleResolution": "node",
+    "target": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "strict": true,
     "esModuleInterop": true,
+    "skipLibCheck": true,
+    "types": ["node", "express"],
+    "lib": ["ESNext"],
     "allowSyntheticDefaultImports": true,
-    "outDir": "dist",
-    "rootDir": "src",
     "sourceMap": true,
     "resolveJsonModule": true,
-    "types": ["node"],
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "dist",
+    "rootDir": "src"
   },
   "include": ["src"]
 }
