@@ -16,3 +16,31 @@ Back-End-Schnittstelle (z.B. Spring Boot oder Node.js). Dokumentation der Back-E
 - **HZ4**: Hält vorgegebene Coderichtlinien ein und überprüft laufend deren Einhaltung. `[g5.5]`
 - **HZ5**: Legt Änderungen und Erweiterungen der Implementierung übersichtlich und zuverlässig in einem Softwareverwaltungssystem ab. `[g5.6]`
 - **HZ6**: Implementiert im Back-End einen aktuellen Authentifizierungsmechanismus und schützt mindestens einen Bereich des Back-Ends vor anonymen Zugriffen. `[g3.2, g3.4]`
+
+# 1. Einführung in Node.js
+
+```shell
+npm init -y
+# copy package.json from Manual
+npm install
+# Eslint - initialisieren
+npx eslint --init
+# Jiti - initialisieren
+npx jiti --init
+```
+# Update Dependencies
+```shell
+# aktuellen stand prüfen der Abhängigkeiten
+npm outdated
+# veraltete Abhängigkeiten aktualisieren
+npm update
+# Alle auf „neueste Major“ heben
+npx npm-check-updates -u
+npm install
+
+# Abhängigkeiten überprüfen
+npm run typecheck     # TS-Typen
+npm run lint          # ESLint
+npm run build         # tsc-Build
+npm run dev / start   # App starten
+```

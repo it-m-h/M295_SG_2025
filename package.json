@@ -1,0 +1,27 @@
+{
+  "name": "_________________m295_sg_2025",
+  "version": "1.0.0",
+  "description": "295 Backend für Applikationen realisieren",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/it-m-h/M295_SG_2025.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/it-m-h/M295_SG_2025/issues"
+  },
+  "homepage": "https://github.com/it-m-h/M295_SG_2025#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "eslint": "^9.39.1",
+    "eslint-plugin-react": "^7.37.5",
+    "globals": "^16.5.0"
+  }
+}
