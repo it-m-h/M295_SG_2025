@@ -1,2 +1,18 @@
 # M295_SG_2025
-Modul 295 - API
+295 Backend für Applikationen realisieren
+
+Kompetenz
+Implementiert mittels vorgegebener Technologie eine Back-End-Schnittstelle, welche aktuelle Schnittstellen-Standards einhält.
+
+Objekt
+Back-End-Schnittstelle (z.B. Spring Boot oder Node.js). Dokumentation der Back-End-Schnittstelle. Zum Beispiel: Verwaltung einer Todo-Liste.
+
+
+# 📚 Kursziel
+
+- **HZ1**: Richtet die lokale Entwicklungs- und Laufzeitumgebung so ein, dass ein vorgegebenes Projekt entwickelt werden kann. `[g5.1]`
+- **HZ2**: Implementiert und dokumentiert mittels vorgegebener Technologie eine effiziente und strukturierte Back-End-Schnittstelle zur Verwaltung (Create, Read, Update, Delete) einer existierenden Datenquelle. Nutzt dabei aktuelle Schnittstellen-Standards und hält sich an relevante Vorgaben. `[g5.2]`
+- **HZ3**: Überprüft Zwischenergebnisse mit den Anforderungen (funktional, nicht-funktional, Sicherheit) und nimmt laufend Korrekturen vor. `[g5.4, g6.3, g6.4, g6.5, g6.6, g6.7, g6.8]`
+- **HZ4**: Hält vorgegebene Coderichtlinien ein und überprüft laufend deren Einhaltung. `[g5.5]`
+- **HZ5**: Legt Änderungen und Erweiterungen der Implementierung übersichtlich und zuverlässig in einem Softwareverwaltungssystem ab. `[g5.6]`
+- **HZ6**: Implementiert im Back-End einen aktuellen Authentifizierungsmechanismus und schützt mindestens einen Bereich des Back-Ends vor anonymen Zugriffen. `[g3.2, g3.4]`
