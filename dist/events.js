@@ -9,6 +9,6 @@ emitter.on('begruessung', (name) => {
 });
 // Helfer zum Auslösen des Ereignisses
 export function sagHallo(name) {
-    emitter.emit('begruessen', name);
+    emitter.emit('begruessung', name);
 }
 //# sourceMappingURL=events.js.map

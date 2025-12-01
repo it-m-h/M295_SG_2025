@@ -12,5 +12,5 @@ emitter.on('begruessung', (name: string) => {
 
 // Helfer zum Auslösen des Ereignisses
 export function sagHallo(name: string) {
-  emitter.emit('begruessen', name)
+  emitter.emit('begruessung', name)
 }
