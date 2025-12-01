@@ -97,4 +97,29 @@ npm run check
 npm install -D @types/node
 npm install -D @types/express
 # Typedef von express löschen weil @types/express installiert wurden
+
+npm install -D ts-node typescript
 ``` 
+
+
+# Tools
+
+```shell
+
+npm install -D concurrently
+``` 
+
+
+# Scripts: PACKAGE.JSON
+
+Bei jeder Änderung im Quellcode wird automatisch der TypeScript-Compiler gestartet und danach der Node-Prozess neu gestartet.
+
+```JSON 
+"dev": "concurrently \"tsc -w --preserveWatchOutput -p tsconfig.json\" \"nodemon --watch dist --ext js --delay 200ms dist/index.js\"",
+```
+
+Kurz erklärt:
+- concurrently -k startet beide Prozesse und beendet alle, wenn einer fehlschlägt.
+- tsc -w -p tsconfig.json übersetzt TypeScript dauerhaft in dist.
+- wait-on dist/index.js wartet, bis die Datei existiert.
+- nodemon --watch dist --ext js --delay 200ms dist/index.js startet Node neu, sobald JS-Dateien in dist geändert werden.
