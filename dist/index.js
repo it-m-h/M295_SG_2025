@@ -4,6 +4,8 @@ import { readFile } from 'fs/promises';
 import { join } from 'path';
 // Cars routes import from src/routes/cars.ts
 import carsRouter from './routes/cars.js';
+// Files routes import from src/routes/files.ts
+import filesRouter from './routes/files.js';
 const filePath = join(process.cwd(), 'data', 'mytext.txt');
 const app = express();
 app.use(express.json());
@@ -15,6 +17,8 @@ app.get('/', (req, res) => {
 });
 // getCar routes
 app.use('/getCar', carsRouter);
+// file routes
+app.use('/files', filesRouter);
 // Emit custom event
 app.get('/myemit', (req, res) => {
     emitter.emit('begruessung', 'Hallo Herr Harald Muster');

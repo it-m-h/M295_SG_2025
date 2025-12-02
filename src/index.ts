@@ -3,10 +3,10 @@ import { emitter } from './events.js'
 import { readFile } from 'fs/promises'
 import { join } from 'path'
 
-
-
 // Cars routes import from src/routes/cars.ts
 import carsRouter from './routes/cars.js'
+// Files routes import from src/routes/files.ts
+import filesRouter from './routes/files.js'
 
 const filePath = join(process.cwd(), 'data', 'mytext.txt')
 
@@ -23,6 +23,8 @@ app.get('/', (req: Request, res: Response) => {
 // getCar routes
 app.use('/getCar', carsRouter)
 
+// file routes
+app.use('/files', filesRouter)
 
 
 // Emit custom event

@@ -55,4 +55,53 @@ Beispiel: GET /autos/1 (Einzelnes Auto, 200 OK)
   "meta": {}
 }
 ```
+
+Daten übertragen
+
+```js
+// index.ts
+const app = express()
+// Body-Parser Middleware
+app.use(express.json())
+// urlencoded Middleware
+app.use(express.urlencoded({ extended: true }))
+```
+
+```js
+// routes/cars.ts
+router.post('/', (req: Request, res: Response) => {
+  let htmlText = 'Ich will neues Auto mnachen<br>'
+
+  // felder aus req.body lesen und ausgeben
+  console.log(req.body)
+  let Name = req.body.name
+  htmlText += `Name: ${Name} <br>`
+  res.status(200).send(htmlText)
+
+  /* TIPP: in Postman bei Body als raw und JSON formatieren
+    {
+        "name": "Hans Muster"
+    } 
+    */
+})
+```
+
 ## Middleware / Multer
+
+- Middleware: Funktionen, die Anfragen bearbeiten, bevor sie die Route erreichen.
+- Multer: Middleware für das Hochladen von Dateien in Express.js.
+- Installation: `npm install multer`
+- Konfiguration: Speicherort, Dateinamen, Filter.
+- Verwendung in Routen: `files('datei')`.
+
+Example siehe **src/index.ts** und **src/routes/files.ts**
+
+
+Dateinamen in Postman
+![[assets/Pasted image 20251202125534.png]]
+
+UPLOAD in Postman
+
+![[assets/Pasted image 20251202125449.png]]
+
+

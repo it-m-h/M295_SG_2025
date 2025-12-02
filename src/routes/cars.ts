@@ -3,7 +3,7 @@ import type { Request, Response } from 'express'
 const router = Router()
 
 router.get('/', (req: Request, res: Response) => {
-  res.status(200).send('Alle Cars anziegen ')
+  res.status(200).send('Alle Cars anzeigen ')
 })
 
 router.get('/:id', (req: Request, res: Response) => {

@@ -1,7 +1,7 @@
 import { Router } from 'express';
 const router = Router();
 router.get('/', (req, res) => {
-    res.status(200).send('Alle Cars anziegen ');
+    res.status(200).send('Alle Cars anzeigen ');
 });
 router.get('/:id', (req, res) => {
     res.status(200).send('Car mit id ' + req.params.id);
