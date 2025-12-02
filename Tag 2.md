@@ -105,3 +105,16 @@ UPLOAD in Postman
 ![[assets/Pasted image 20251202125449.png]]
 
 
+## Git - Tag & Version
+
+
+```shell
+git tag
+git tag -a v2.0 -m "my version day 2.0"
+git push origin --tags
+git tag
+```
+
+Create new Release:
+![[assets/Pasted image 20251202130259.png]]
+
