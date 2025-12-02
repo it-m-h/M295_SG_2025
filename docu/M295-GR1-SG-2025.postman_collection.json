@@ -7,23 +7,185 @@
 	},
 	"item": [
 		{
-			"name": "alle Cars",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:5000/getCar",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"getCar"
-					]
+			"name": "Cars",
+			"item": [
+				{
+					"name": "alle Cars",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/getCar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"getCar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Car mit ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/getCar/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"getCar",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete Car",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/getCar/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"getCar",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/getCar/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"getCar",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insert",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"brand\": \"Honda\",\r\n  \"model\": \"CRV\",\r\n  \"year\": \"2014\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/getCar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"getCar"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
+		},
+		{
+			"name": "Multer",
+			"item": [
+				{
+					"name": "FilesUpload",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status 200', () => pm.response.to.have.status(200));",
+									"pm.test('Antwort ist Array', () => Array.isArray(pm.response.json()));"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "datei",
+									"type": "file",
+									"src": "postman-cloud:///1f07b61f-ac7a-4f00-a2c6-f921c72102d2"
+								},
+								{
+									"key": "datei",
+									"type": "file",
+									"src": "postman-cloud:///1f0b72c4-6b3d-4500-9f75-710e539790af"
+								},
+								{
+									"key": "datei",
+									"type": "file",
+									"src": "postman-cloud:///1f0b72f5-a35d-4a30-b485-a03d9b2f9a06"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/files",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"files"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
