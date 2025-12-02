@@ -11,15 +11,18 @@ import filesRouter from './routes/files.js'
 const filePath = join(process.cwd(), 'data', 'mytext.txt')
 
 const app = express()
+app.use(express.static('public'));
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+
 const PORT = 5000
 
-// Standard-Route
-app.get('/', (req: Request, res: Response) => {
+// Standard-Route (Achtung mit publiuc nicht ueberschneiden)
+/* app.get('/', (req: Request, res: Response) => {
   res.status(200).send('OK')
-})
+}) */
+
 // getCar routes
 app.use('/getCar', carsRouter)
 
