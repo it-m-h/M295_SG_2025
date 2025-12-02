@@ -1,0 +1,29 @@
+{
+	"info": {
+		"_postman_id": "e35c5b51-c619-4e61-a5fa-54eb634cb33f",
+		"name": "M295-GR1-SG-2025",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20215779"
+	},
+	"item": [
+		{
+			"name": "alle Cars",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/getCar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"getCar"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

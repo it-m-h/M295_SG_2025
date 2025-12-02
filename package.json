@@ -18,7 +18,7 @@
     "fix": "npm run lint:fix && npm run format",
     "test": "jest --runInBand --verbose",
     "test:watch": "jest --watch",
-    "test:cov": "jest --coverage",
+    "test:cov": "jest --coverage"
   },
   "repository": {
     "type": "git",
