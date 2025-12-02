@@ -3,12 +3,17 @@ import { emitter } from './events.js'
 import { readFile } from 'fs/promises'
 import { join } from 'path'
 
+
+
 // Cars routes import from src/routes/cars.ts
 import carsRouter from './routes/cars.js'
 
 const filePath = join(process.cwd(), 'data', 'mytext.txt')
 
 const app = express()
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+
 const PORT = 5000
 
 // Standard-Route

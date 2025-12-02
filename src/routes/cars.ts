@@ -1,4 +1,4 @@
-import { Router } from 'express'
+import { raw, Router } from 'express'
 import type { Request, Response } from 'express'
 const router = Router()
 
@@ -11,7 +11,19 @@ router.get('/:id', (req: Request, res: Response) => {
 })
 
 router.post('/', (req: Request, res: Response) => {
-  res.status(200).send('Ich will neues Auto mnachen')
+  let htmlText = 'Ich will neues Auto mnachen<br>'
+
+  // felder aus req.body lesen und ausgeben
+  console.log(req.body)
+  let Name = req.body.name
+  htmlText += `Name: ${Name} <br>`
+  res.status(200).send(htmlText)
+
+  /* TIPP: in Postman bei Body als raw und JSON formatieren
+    {
+        "name": "Hans Muster"
+    } 
+    */
 })
 
 router.put('/:id', (req: Request, res: Response) => {
@@ -21,6 +33,5 @@ router.put('/:id', (req: Request, res: Response) => {
 router.delete('/:id', (req: Request, res: Response) => {
   res.status(200).send('Ich will delete machen mit id ' + req.params.id)
 })
-
 
 export default router
