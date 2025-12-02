@@ -5,15 +5,22 @@
     "moduleResolution": "NodeNext",
     "strict": true,
     "esModuleInterop": true,
-    "skipLibCheck": true,
-    "types": ["node", "express"],
-    "lib": ["ESNext"],
-    "allowSyntheticDefaultImports": true,
+    "outDir": "dist",
+    "rootDir": "src",
     "sourceMap": true,
     "resolveJsonModule": true,
+    "types": ["node", "jest", "supertest"],
+    "lib": ["ESNext"],
+     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "dist",
-    "rootDir": "src"
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": ["src/*"]
+    },
+    "isolatedModules": true,
+    "allowSyntheticDefaultImports": true,
+    "typeRoots": ["./src/types", "./node_modules/@types"]
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["tests"]
 }
