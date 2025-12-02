@@ -7,7 +7,7 @@ export const emitter = new EventEmitter()
 
 // Listener registrieren
 emitter.on('begruessung', (name: string) => {
-    console.log(`Hallo, ${name}!`)
+  console.log(`Hallo, ${name}!`)
 })
 
 // Helfer zum Auslösen des Ereignisses
