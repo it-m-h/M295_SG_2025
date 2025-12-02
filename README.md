@@ -1,14 +1,12 @@
 # M295_SG_2025
 295 Backend für Applikationen realisieren
 
-Kompetenz
+**Kompetenz**
 Implementiert mittels vorgegebener Technologie eine Back-End-Schnittstelle, welche aktuelle Schnittstellen-Standards einhält.
 
-Objekt
+**Objekt**
 Back-End-Schnittstelle (z.B. Spring Boot oder Node.js). Dokumentation der Back-End-Schnittstelle. Zum Beispiel: Verwaltung einer Todo-Liste.
-
-
-# 📚 Kursziel
+## 📚 Kursziel
 
 - **HZ1**: Richtet die lokale Entwicklungs- und Laufzeitumgebung so ein, dass ein vorgegebenes Projekt entwickelt werden kann. `[g5.1]`
 - **HZ2**: Implementiert und dokumentiert mittels vorgegebener Technologie eine effiziente und strukturierte Back-End-Schnittstelle zur Verwaltung (Create, Read, Update, Delete) einer existierenden Datenquelle. Nutzt dabei aktuelle Schnittstellen-Standards und hält sich an relevante Vorgaben. `[g5.2]`
@@ -17,7 +15,8 @@ Back-End-Schnittstelle (z.B. Spring Boot oder Node.js). Dokumentation der Back-E
 - **HZ5**: Legt Änderungen und Erweiterungen der Implementierung übersichtlich und zuverlässig in einem Softwareverwaltungssystem ab. `[g5.6]`
 - **HZ6**: Implementiert im Back-End einen aktuellen Authentifizierungsmechanismus und schützt mindestens einen Bereich des Back-Ends vor anonymen Zugriffen. `[g3.2, g3.4]`
 
-# 1. Einführung in Node.js
+# Tag1
+## Einführung in Node.js
 
 ```shell
 npm init -y
@@ -26,7 +25,8 @@ npm install
 # Eslint - initialisieren
 npx eslint --init
 ```
-# Update Dependencies
+## update dependencies
+
 ```shell
 # aktuellen stand prüfen der Abhängigkeiten
 npm outdated
@@ -46,7 +46,6 @@ npm run dev / start   # App starten
 
 ```shell
 npm install express
-
 npm install --save-dev @types/node
 # typescript installieren (global oder DEV)
 npm install -g typescript
@@ -60,9 +59,7 @@ tsc
 node dist/index.js
 ```
 
-
-
-# Jiti
+## Jiti
 npx jiti ist ein TS/ESM-Interpreter, der TypeScript- und moderne JavaScript-Dateien ohne Kompilieren sofort ausführt.
 
 Sie müssen keinen tsc-Build machen und auch keine .js-Dateien erzeugen.
@@ -75,7 +72,7 @@ jiti src/index.ts
 # lokal , nicht global installiert: npx jiti src/index.ts
 ```
 
-# Eslint and Prettier
+## Eslint and Prettier
 
 ```shell
 npm install --save-dev eslint prettier eslint-config-prettier eslint-plugin-prettier
@@ -88,7 +85,7 @@ Fehler finden und automatisch beheben:
 npx eslint . --ext .ts --fix
 ```
 
-# Fehler beheben
+## Fehler beheben
 
 ```shell
 npm run check
@@ -102,15 +99,13 @@ npm install -D ts-node typescript
 ``` 
 
 
-# Tools
+## Tools
 
 ```shell
-
 npm install -D concurrently
 ``` 
 
-
-# Scripts: PACKAGE.JSON
+## Scripts in package.json
 
 Bei jeder Änderung im Quellcode wird automatisch der TypeScript-Compiler gestartet und danach der Node-Prozess neu gestartet.
 
@@ -123,3 +118,31 @@ Kurz erklärt:
 - tsc -w -p tsconfig.json übersetzt TypeScript dauerhaft in dist.
 - wait-on dist/index.js wartet, bis die Datei existiert.
 - nodemon --watch dist --ext js --delay 200ms dist/index.js startet Node neu, sobald JS-Dateien in dist geändert werden.
+
+# Tag2
+
+## dependencies / devDependencies / scripts
+
+
+## RESTful - API / Routing
+
+
+## Middleware / Multer
+
+
+# Tag3
+
+## Datenbanken
+
+## Swagger
+
+
+# Tag4
+
+## Session / JWT / Login
+
+## Test / Jest / Swagger
+
+# Tag5
+
+## LB
