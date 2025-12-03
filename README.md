@@ -1,142 +1,30 @@
-# M295_SG_2025
+# M295_SG_2025 - Tag 3
 295 Backend für Applikationen realisieren
 
-**Kompetenz**
-Implementiert mittels vorgegebener Technologie eine Back-End-Schnittstelle, welche aktuelle Schnittstellen-Standards einhält.
+## Rückblick, was bereits erledigt wurde:
+- Grundlegendes Setup des Projekts
+    - dependencies installieren (Express, Mongoose, Multer, Swagger UI)
+    - Projektstruktur erstellen (Ordner für Routen, Modelle, Controller, Middleware)
+    - devDependencies einrichten (Nodemon für automatischen Neustart)
+    - prettier konfigurieren für konsistente Codeformatierung
+    - linting konfigurieren (ESLint)
+- Erstellung der grundlegenden API-Endpunkte (Routing)
+    - GET, POST, PUT, DELETE Endpunkte für Cars 
+- Integration von Middleware (Multer für Dateiuploads)
+    - file upload handling 
+- Testen der API-Endpunkte mit Postman
 
-**Objekt**
-Back-End-Schnittstelle (z.B. Spring Boot oder Node.js). Dokumentation der Back-End-Schnittstelle. Zum Beispiel: Verwaltung einer Todo-Liste.
-## 📚 Kursziel
+## Datenbanken (Kap.10)
 
-- **HZ1**: Richtet die lokale Entwicklungs- und Laufzeitumgebung so ein, dass ein vorgegebenes Projekt entwickelt werden kann. `[g5.1]`
-- **HZ2**: Implementiert und dokumentiert mittels vorgegebener Technologie eine effiziente und strukturierte Back-End-Schnittstelle zur Verwaltung (Create, Read, Update, Delete) einer existierenden Datenquelle. Nutzt dabei aktuelle Schnittstellen-Standards und hält sich an relevante Vorgaben. `[g5.2]`
-- **HZ3**: Überprüft Zwischenergebnisse mit den Anforderungen (funktional, nicht-funktional, Sicherheit) und nimmt laufend Korrekturen vor. `[g5.4, g6.3, g6.4, g6.5, g6.6, g6.7, g6.8]`
-- **HZ4**: Hält vorgegebene Coderichtlinien ein und überprüft laufend deren Einhaltung. `[g5.5]`
-- **HZ5**: Legt Änderungen und Erweiterungen der Implementierung übersichtlich und zuverlässig in einem Softwareverwaltungssystem ab. `[g5.6]`
-- **HZ6**: Implementiert im Back-End einen aktuellen Authentifizierungsmechanismus und schützt mindestens einen Bereich des Back-Ends vor anonymen Zugriffen. `[g3.2, g3.4]`
+    - sqlite3 - Dateibasierte Speicherung
+    - CRUD Operationen umsetzen mit sqlite3
+    - fakultativ: Nutzung von Prisma als ORM
 
-# Tag1
-## Einführung in Node.js
+## Swagger UI & Postman (Kap.15)
 
-```shell
-npm init -y
-# copy package.json from Manual
-npm install
-# Eslint - initialisieren
-npx eslint --init
-```
-## update dependencies
+    - Testing der API-Endpunkte mit Swagger UI
+    - Testing der API-Endpunkte mit Postman 
 
-```shell
-# aktuellen stand prüfen der Abhängigkeiten
-npm outdated
-# veraltete Abhängigkeiten aktualisieren
-npm update
-# Alle auf „neueste Major“ heben
-npx npm-check-updates -u
-npm install
+## Nächste Schritte:
 
-# Abhängigkeiten überprüfen
-npm run typecheck     # TS-Typen
-npm run lint          # ESLint
-npm run build         # tsc-Build
-npm run dev / start   # App starten
-```
-
-
-```shell
-npm install express
-npm install --save-dev @types/node
-# typescript installieren (global oder DEV)
-npm install -g typescript
-npm install --save-dev typescript
-
-# Version prüfen
-tsc ---version
-# TypeScript kompilieren
-tsc 
-# Webserver starten
-node dist/index.js
-```
-
-## Jiti
-npx jiti ist ein TS/ESM-Interpreter, der TypeScript- und moderne JavaScript-Dateien ohne Kompilieren sofort ausführt.
-
-Sie müssen keinen tsc-Build machen und auch keine .js-Dateien erzeugen.
-
-```shell
-# Jiti - global installieren
-npm install -g jiti
-# Jiti - run
-jiti src/index.ts
-# lokal , nicht global installiert: npx jiti src/index.ts
-```
-
-## Eslint and Prettier
-
-```shell
-npm install --save-dev eslint prettier eslint-config-prettier eslint-plugin-prettier
-npm install --save-dev typescript-eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
-```
-
-Fehler finden und automatisch beheben:
-
-```shell
-npx eslint . --ext .ts --fix
-```
-
-## Fehler beheben
-
-```shell
-npm run check
-
-#tsconfig anpassen (lib)
-npm install -D @types/node
-npm install -D @types/express
-# Typedef von express löschen weil @types/express installiert wurden
-
-npm install -D ts-node typescript
-``` 
-
-
-## Tools
-
-```shell
-npm install -D concurrently
-``` 
-
-## Scripts in package.json
-
-Bei jeder Änderung im Quellcode wird automatisch der TypeScript-Compiler gestartet und danach der Node-Prozess neu gestartet.
-
-```JSON 
-"dev": "concurrently \"tsc -w --preserveWatchOutput -p tsconfig.json\" \"nodemon --watch dist --ext js --delay 200ms dist/index.js\"",
-```
-
-Kurz erklärt:
-- concurrently -k startet beide Prozesse und beendet alle, wenn einer fehlschlägt.
-- tsc -w -p tsconfig.json übersetzt TypeScript dauerhaft in dist.
-- wait-on dist/index.js wartet, bis die Datei existiert.
-- nodemon --watch dist --ext js --delay 200ms dist/index.js startet Node neu, sobald JS-Dateien in dist geändert werden.
-
-# Tag2
-
-[[Tag 2]]
-
-
-# Tag3
-
-## Datenbanken
-
-## Swagger
-
-
-# Tag4
-
-## Session / JWT / Login
-
-## Test / Jest / Swagger
-
-# Tag5
-
-## LB
+    - Erweiterte Fehlerbehandlung und Validierung der Daten hinzufügen (Kap.9 & 13)
