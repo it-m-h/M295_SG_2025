@@ -54,7 +54,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5000/getCar/5",
+							"raw": "http://localhost:5000/getCar/10",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -62,7 +62,7 @@
 							"port": "5000",
 							"path": [
 								"getCar",
-								"5"
+								"10"
 							]
 						}
 					},
@@ -73,8 +73,17 @@
 					"request": {
 						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"brand\": \"xxxxxxxxxxxxxxxx\",\r\n  \"model\": \"Yaris Hybrid\",\r\n  \"year\": 2022\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:5000/getCar/5",
+							"raw": "http://localhost:5000/getCar/11",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -82,7 +91,7 @@
 							"port": "5000",
 							"path": [
 								"getCar",
-								"5"
+								"11"
 							]
 						}
 					},
@@ -121,6 +130,56 @@
 		{
 			"name": "Multer",
 			"item": [
+				{
+					"name": "ListeDerFiles",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://localhost:5000/files",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"files"
+							]
+						}
+					},
+					"response": []
+				},
 				{
 					"name": "FilesUpload",
 					"event": [

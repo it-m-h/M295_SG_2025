@@ -9,6 +9,43 @@ export async function getAllCars(req: Request, res: Response, next: NextFunction
   } catch (err) { next(err) }
 }
 
+export async function getCarById(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    const id = Number(req.params.id)
+    if (!Number.isFinite(id))
+      return res.status(400).json({ fehler: 'Ungültige ID' })
+    const car = await repo.findById(id)
+    if (!car) return res.status(404).json({ fehler: 'Nicht gefunden' })
+    res.json(car)
+  } catch (err: unknown) {
+    next(err)
+  }
+}
+
+
+export async function updateCar(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    const id = Number(req.params.id)
+    if (!Number.isFinite(id))
+      return res.status(400).json({ fehler: 'Ungültige ID' })
+    const v = validateCarInput(req.body)
+    if (!v.ok) return res.status(400).json({ fehler: v.errors })
+    const updated = await repo.replace(id, v.value!)
+    if (!updated) return res.status(404).json({ fehler: 'Nicht gefunden' })
+    res.json(updated)
+  } catch (err: unknown) {
+    next(err)
+  }
+}
+
 export async function createCar(req: Request, res: Response, next: NextFunction) {
   try {
     const v = validateCarInput(req.body)
@@ -17,6 +54,24 @@ export async function createCar(req: Request, res: Response, next: NextFunction)
     // Location-Header setzen (Best Practice)
     res.status(201).location(`/api/cars/${car.id}`).json(car)
   } catch (err) { next(err) }
+}
+
+
+export async function deleteCar(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    const id = Number(req.params.id)
+    if (!Number.isFinite(id))
+      return res.status(400).json({ fehler: 'Ungültige ID' })
+    const ok = await repo.remove(id)
+    if (!ok) return res.status(404).json({ fehler: 'Nicht gefunden' })
+    res.status(204).send('erfolgreich gelöscht') 
+  } catch (err: unknown) {
+    next(err)
+  }
 }
 
 

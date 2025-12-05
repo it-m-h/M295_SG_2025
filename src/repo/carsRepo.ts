@@ -1,50 +1,63 @@
 import { openDb } from '@src/lib/ensureDatabase.js'
 import type { Car, CarInput } from '../types/car.js'
 
-// Einfache In-Memory-Datenbasis (später durch DB ersetzbar)
-let _cars: Car[] = [
-  { id: 1, brand: 'Toyota', model: 'Corolla', year: 2018 },
-  { id: 2, brand: 'VW', model: 'Golf', year: 2020 },
-]
-
-let _nextId = 3
-
 export async function list(): Promise<Car[]> {
   const db = await openDb()
   return await new Promise<Car[]>((resolve, reject) => {
-    db.all(
-      'SELECT * FROM cars ORDER BY id ASC',
-      [],
-      (err, rows) => (err ? reject(err) : resolve(rows as Car[]))
+    db.all('SELECT * FROM cars ORDER BY id ASC', [], (err, rows) =>
+      err ? reject(err) : resolve(rows as Car[])
     )
   })
-
-  //return _cars
 }
 
 export async function findById(id: number): Promise<Car | null> {
-  return _cars.find((c) => c.id === id) ?? null
+  const db = await openDb()
+  return await new Promise<Car | null>((resolve, reject) => {
+    db.get(
+      'SELECT id, brand, model, year FROM cars WHERE id = ?',
+      [id],
+      (err, row) => (err ? reject(err) : resolve(row ? (row as Car) : null))
+    )
+  })
 }
 
 export async function create(input: CarInput): Promise<Car> {
-  const car: Car = { id: _nextId++, ...input }
-  _cars.push(car)
-  return car
+  const db = await openDb()
+  return await new Promise<Car>((resolve, reject) => {
+    db.run(
+      'INSERT INTO cars (brand, model, year) VALUES (?, ?, ?)',
+      [input.brand, input.model, input.year],
+      function (err) {
+        if (err) return reject(err)
+        resolve({ id: this.lastID, ...input })
+      }
+    )
+  })
 }
 
 export async function replace(
   id: number,
   input: CarInput
 ): Promise<Car | null> {
-  const idx = _cars.findIndex((c) => c.id === id)
-  if (idx === -1) return null
-  const updated: Car = { id, ...input }
-  _cars[idx] = updated
-  return updated
+  const db = await openDb()
+  return await new Promise<Car | null>((resolve, reject) => {
+    db.run(
+      'UPDATE cars SET brand = ?, model = ?, year = ? WHERE id = ?',
+      [input.brand, input.model, input.year, id],
+      function (err) {
+        if (err) return reject(err)
+        resolve(this.changes === 0 ? null : { id, ...input })
+      }
+    )
+  })
 }
 
 export async function remove(id: number): Promise<boolean> {
-  const before = _cars.length
-  _cars = _cars.filter((c) => c.id !== id)
-  return _cars.length < before
+  const db = await openDb()
+  return await new Promise<boolean>((resolve, reject) => {
+    db.run('DELETE FROM cars WHERE id = ?', [id], function (err) {
+      if (err) return reject(err)
+      resolve(this.changes > 0)
+    })
+  })
 }
