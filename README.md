@@ -14,6 +14,15 @@
     - file upload handling 
 - Testen der API-Endpunkte mit Postman
 
+
+## Server start & API trennen
+
+    - Server - Skript in eine eigene Datei auslagern (server.ts)
+    - APP - Skript in eine eigene Datei auslagern (app.ts)
+    - Konfiguration in eine eigene Datei auslagern (config.ts)
+    - package.json Skript anpassen um den Server zu starten ("cars": "tsc && node ./dist/server.js")
+    - testen ob der Server weiterhin funktioniert (npm run cars & http://localhost:5000/getCar)
+
 ## Datenbanken (Kap.10)
 
     - sqlite3 - Dateibasierte Speicherung

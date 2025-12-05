@@ -4,6 +4,8 @@
   "description": "295 Backend für Applikationen realisieren",
   "main": "index.js",
   "scripts": {
+    "cars": "tsc && node ./dist/server.js",
+
     "build": "tsc",
     "start": "node dist/server.js",
     "run": "tsc && node ./dist/index.js",
