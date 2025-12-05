@@ -72,7 +72,7 @@ async function runSqlFile(
   )
 }
 
-async function openDb(): Promise<sqlite3.Database> {
+export async function openDb(): Promise<sqlite3.Database> {
   const db = new sqlite3.Database(DB_PATH)
   return new Promise((resolve, reject) => {
     db.exec('PRAGMA foreign_keys = ON;', (err) => {

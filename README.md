@@ -42,7 +42,10 @@
 
 ![[assets/Pasted image 20251205093419.png]]
 
+### getCar - alle Daten anzeigen
 
+- repo/carsRepo.ts anpassen (list)
+![[assets/Pasted image 20251205094238.png]]
 ## Swagger UI & Postman (Kap.15)
 
     - Testing der API-Endpunkte mit Swagger UI

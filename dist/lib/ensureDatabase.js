@@ -63,7 +63,7 @@ async function runSqlFile(db, filePath) {
     const sql = await readFile(filePath, 'utf-8');
     return new Promise((resolve, reject) => db.exec(sql, (err) => (err ? reject(err) : resolve())));
 }
-async function openDb() {
+export async function openDb() {
     const db = new sqlite3.Database(DB_PATH);
     return new Promise((resolve, reject) => {
         db.exec('PRAGMA foreign_keys = ON;', (err) => {
