@@ -24,10 +24,20 @@
     - testen ob der Server weiterhin funktioniert (npm run cars & http://localhost:5000/getCar)
 
 ## Datenbanken (Kap.10)
-
     - sqlite3 - Dateibasierte Speicherung
     - CRUD Operationen umsetzen mit sqlite3
     - fakultativ: Nutzung von Prisma als ORM
+
+    ### alias verwenden um inport Pfade zu vereinfachen
+     - tsconfig.json anpassen um Pfad Aliase zu definieren
+     - in den Importen die Aliase verwenden (z.B. @src, @models, @controllers usw.)
+     - `npm install --save-dev tsc-alias`
+
+    ### ensureDatabase.ts -> check op DB existiert, wenn nicht erstelle sie
+     - Config Datei anpassen um den DB Pfad zu speichern (config.ts)
+     - Im Server Start Skript die ensureDatabase Funktion aufrufen (server.ts)
+     - Check vor dem Starten des Servers ob die DB Datei existiert (ensureDatabase.ts)
+     - erstelle die DB - Datei und initialisiere die Tabellen (ensureDatabase.ts)
 
 ## Swagger UI & Postman (Kap.15)
 
