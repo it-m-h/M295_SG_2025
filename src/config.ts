@@ -1,6 +1,6 @@
 import path from 'node:path'
-const PROJECT_ROOT = path.resolve(process.cwd())
-const DB_RELATIVE = 'data/database.sqlite3'
+export const PROJECT_ROOT = path.resolve(process.cwd())
+export const DB_RELATIVE = 'data/database.sqlite3'
 
 function absFromProject(relativePath: string): string {
   return path.join(PROJECT_ROOT, relativePath)

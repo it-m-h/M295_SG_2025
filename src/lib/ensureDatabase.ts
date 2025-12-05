@@ -3,27 +3,81 @@ import fs from 'node:fs/promises'
 import { readdir, readFile, access } from 'node:fs/promises'
 import { constants as fsConstants } from 'node:fs'
 import sqlite3 from 'sqlite3'
-import { DB_PATH } from "@src/config.js";
+import { DB_PATH, PROJECT_ROOT } from '@src/config.js'
 
-export async function ensureDatabase(
-  dbRel: string = DB_PATH
-): Promise<void> {
-    const dbDir = path.dirname(DB_PATH)
-    const exists = await fileExists(DB_PATH)
-    if (!exists) {
+export async function ensureDatabase(dbRel: string = DB_PATH): Promise<void> {
+  const dbDir = path.dirname(DB_PATH)
+  const exists = await fileExists(DB_PATH)
+  if (!exists) {
     console.log('Erstelle neue leere Datenbank...')
-        console.log('Datenbank existiert nicht. Initialisiere...')
-    } else {
-        console.log('Datenbank existiert bereits. Keine Initialisierung nötig.')
-    }
+    console.log('Datenbank existiert nicht. Initialisiere...')
+    await fs.writeFile(DB_PATH, '')
+    await ensureMigrations()
+    await ensureSeeders()
+  } else {
+    console.log('Datenbank existiert bereits. Keine Initialisierung nötig.')
+  }
 }
 
+async function ensureMigrations() {
+  const migrationsDir = PROJECT_ROOT + '/data/migrations'
+  const sqlFiles = (await readdir(migrationsDir))
+    .filter((f) => f.endsWith('.sql'))
+    .sort()
 
-export async function fileExists(absPath: string): Promise<boolean> {
+  const db = await openDb()
+  try {
+    for (const file of sqlFiles) {
+      await runSqlFile(db, path.join(migrationsDir, file))
+      console.log(`✅ Migration ausgeführt: ${file}`)
+    }
+  } finally {
+    db.close()
+  }
+}
+
+async function ensureSeeders() {
+  const seedersDir = PROJECT_ROOT + '/data/seeders'
+  const sqlFiles = (await readdir(seedersDir))
+    .filter((f) => f.endsWith('.sql'))
+    .sort()
+
+  const db = await openDb()
+  try {
+    for (const file of sqlFiles) {
+      await runSqlFile(db, path.join(seedersDir, file))
+      console.log(`✅ Seeder ausgeführt: ${file}`)
+    }
+  } finally {
+    db.close()
+  }
+}
+
+async function fileExists(absPath: string): Promise<boolean> {
   try {
     await access(absPath, fsConstants.F_OK)
     return true
   } catch {
     return false
   }
+}
+
+async function runSqlFile(
+  db: sqlite3.Database,
+  filePath: string
+): Promise<void> {
+  const sql = await readFile(filePath, 'utf-8')
+  return new Promise((resolve, reject) =>
+    db.exec(sql, (err) => (err ? reject(err) : resolve()))
+  )
+}
+
+async function openDb(): Promise<sqlite3.Database> {
+  const db = new sqlite3.Database(DB_PATH)
+  return new Promise((resolve, reject) => {
+    db.exec('PRAGMA foreign_keys = ON;', (err) => {
+      if (err) reject(err)
+      else resolve(db)
+    })
+  })
 }
